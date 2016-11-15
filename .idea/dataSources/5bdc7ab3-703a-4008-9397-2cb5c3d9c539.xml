@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Derby (Remote) - sun-appserv-samples@localhost">
+  <database-model serializer="dbm" rdbms="DERBY" format-version="2.6">
+    <schema id="1" name="APP">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="NULLID"/>
+    <schema id="3" name="SQLJ"/>
+    <schema id="4" name="SYS"/>
+    <schema id="5" name="SYSCAT"/>
+    <schema id="6" name="SYSCS_DIAG"/>
+    <schema id="7" name="SYSCS_UTIL"/>
+    <schema id="8" name="SYSFUN"/>
+    <schema id="9" name="SYSIBM"/>
+    <schema id="10" name="SYSPROC"/>
+    <schema id="11" name="SYSSTAT"/>
+    <table id="12" parent="1" name="ADMINISTRATEUR"/>
+    <table id="13" parent="1" name="BOOKMAKERS"/>
+    <table id="14" parent="1" name="BOOKMAKERS_COTE"/>
+    <table id="15" parent="1" name="COTE"/>
+    <table id="16" parent="1" name="MATCH_COTE"/>
+    <table id="17" parent="1" name="MATCH_PARI"/>
+    <table id="18" parent="1" name="PARI"/>
+    <table id="19" parent="1" name="PARIEUR"/>
+    <table id="20" parent="1" name="PARIEUR_MATCH"/>
+    <table id="21" parent="1" name="PARIEUR_PARI"/>
+    <table id="22" parent="1" name="SEQUENCE"/>
+    <table id="23" parent="1" name="UTILISATEUR"/>
+    <column id="24" parent="12" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="25" parent="12" name="NOM">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="26" parent="12" name="SQL161116001936160">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="27" parent="13" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="28" parent="13" name="NOM">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="29" parent="13" name="SQL161116001936180">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="30" parent="14" name="BOOKMAKERS_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="31" parent="14" name="COTELIST_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="32" parent="14" name="SQL161116001936250">
+      <name-surrogate>1</name-surrogate>
+      <columns>BOOKMAKERS_ID
+COTELIST_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="33" parent="14" name="BKMKRSCOTEBKMKRSID">
+      <columns>BOOKMAKERS_ID</columns>
+      <ref-key>~.BOOKMAKERS.SQL161116001936180</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="34" parent="14" name="BKMKERSCOTECTLSTID">
+      <columns>COTELIST_ID</columns>
+      <ref-key>~.COTE.SQL161116001936200</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="35" parent="15" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="36" parent="15" name="DEFAITE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="37" parent="15" name="NB_BUT">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="38" parent="15" name="SCORE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="39" parent="15" name="VICTOIRE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="40" parent="15" name="SQL161116001936200">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="41" parent="16" name="MATCH_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="42" parent="16" name="COTELIST_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="43" parent="16" name="SQL161116001936270">
+      <name-surrogate>1</name-surrogate>
+      <columns>MATCH_ID
+COTELIST_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="44" parent="16" name="MTCHCOTECOTELISTID">
+      <columns>COTELIST_ID</columns>
+      <ref-key>~.COTE.SQL161116001936200</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="45" parent="17" name="MATCH_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="46" parent="17" name="PARILIST_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="47" parent="17" name="SQL161116001936280">
+      <name-surrogate>1</name-surrogate>
+      <columns>MATCH_ID
+PARILIST_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="48" parent="17" name="MTCHPARIPARILISTID">
+      <columns>PARILIST_ID</columns>
+      <ref-key>~.PARI.SQL161116001936210</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="49" parent="18" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="50" parent="18" name="MONTANT">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="51" parent="18" name="COTE_ID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="52" parent="18" name="MATCH_ID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="53" parent="18" name="SQL161116001936210">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="54" parent="18" name="FK_PARI_COTE_ID">
+      <columns>COTE_ID</columns>
+      <ref-key>~.COTE.SQL161116001936200</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="55" parent="19" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="56" parent="19" name="LIMCOINS_PARIEUR">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="57" parent="19" name="NOM_PARIEUR">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="58" parent="19" name="SQL161116001936150">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="59" parent="20" name="PARIEUR_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="60" parent="20" name="MATCHLIST_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="61" parent="20" name="SQL161116001936230">
+      <name-surrogate>1</name-surrogate>
+      <columns>PARIEUR_ID
+MATCHLIST_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="62" parent="20" name="PREURMATCHPRIEURID">
+      <columns>PARIEUR_ID</columns>
+      <ref-key>~.PARIEUR.SQL161116001936150</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="63" parent="21" name="PARIEUR_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="64" parent="21" name="PARILIST_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="65" parent="21" name="SQL161116001936240">
+      <name-surrogate>1</name-surrogate>
+      <columns>PARIEUR_ID
+PARILIST_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="66" parent="21" name="PRIEURPARIPRIEURID">
+      <columns>PARIEUR_ID</columns>
+      <ref-key>~.PARIEUR.SQL161116001936150</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="67" parent="21" name="PREURPARIPRILISTID">
+      <columns>PARILIST_ID</columns>
+      <ref-key>~.PARI.SQL161116001936210</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="68" parent="22" name="SEQ_NAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(50)|12</data-type>
+    </column>
+    <column id="69" parent="22" name="SEQ_COUNT">
+      <data-type>DECIMAL(15)|3</data-type>
+    </column>
+    <key id="70" parent="22" name="SQL161115220216720">
+      <name-surrogate>1</name-surrogate>
+      <columns>SEQ_NAME</columns>
+      <primary>1</primary>
+    </key>
+    <column id="71" parent="23" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="72" parent="23" name="MOTDEPASSE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="73" parent="23" name="NOM">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="74" parent="23" name="TYPE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="75" parent="23" name="SQL161116001936140">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

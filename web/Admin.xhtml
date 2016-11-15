@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Création_Utilisateur</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+    <h3 style="text-align: center;">Création d'utilisateur</h3>
+    <h:form class="form-style-1">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="id : "/>
+            <h:inputText value="#{UserBean.utilisateur.id}"/>
+            <h:outputLabel value="Nom : "/>
+            <h:inputText value="#{UserBean.utilisateur.nom}"/>
+            <h:outputLabel value="Mot de passe :"/>
+            <h:inputText value="#{UserBean.utilisateur.motdePasse}"/>
+            <h:outputLabel value="Type:"/>
+            <h:inputText value="#{UserBean.utilisateur.type}"/>
+        </h:panelGrid>
+        <h:commandButton value="Créer Nouvelle utilisateur"
+                         action="#{UserBean.addNewUtilisateur()}"/>
+    </h:form>
+    <h3 style="text-align: center;">Liste d'utilisateur</h3>
+    <h:dataTable value="#{UserBean.utilisateurList}" var="user"  border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{user.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nom"/>
+            </f:facet>
+            <h:outputText value="#{user.nom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Mot de Passe"/>
+            </f:facet>
+            <h:outputText value="#{user.motdePasse}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Type"/>
+            </f:facet>
+            <h:outputText value="#{user.type}"/>
+        </h:column>
+        <h:column>
+            <h:commandLink value="edit"
+                           action="#{uc.editUser(usr)}" /> |
+            <h:commandLink value="delete"
+                           action="#{uc.deleteUser(usr)}" />
+        </h:column>
+    </h:dataTable>
+    <h3 style="text-align: center;">Liste de Parieur</h3>
+
+    <h:dataTable value="#{ParieurBean.parieurList}" var="parieu"  border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{parieu.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nom"/>
+            </f:facet>
+            <h:outputText value="#{parieu.nom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Limcoins"/>
+            </f:facet>
+            <h:outputText value="#{parieu.limcoins}"/>
+        </h:column>
+        <h:column>
+            <h:commandLink value="edit"
+                           action="#{uc.editUser(usr)}" /> |
+            <h:commandLink value="delete"
+                           action="#{uc.deleteUser(usr)}" />
+        </h:column>
+    </h:dataTable>
+    <h3 style="text-align: center;">Liste de Bookmakers</h3>
+
+    <h:dataTable value="#{BookmalersBean.bookmakersList}" var="bookmak"  border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Id"/>
+            </f:facet>
+            <h:outputText value="#{bookmak.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Nom"/>
+            </f:facet>
+            <h:outputText value="#{bookmak.nom}"/>
+        </h:column>
+        <h:column>
+            <h:commandLink value="edit"
+                           action="#{uc.editUser(usr)}" /> |
+            <h:commandLink value="delete"
+                           action="#{uc.deleteUser(usr)}" />
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
