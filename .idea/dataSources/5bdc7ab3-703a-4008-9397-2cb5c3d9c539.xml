@@ -102,21 +102,21 @@ COTE_ID</columns>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <column id="41" parent="16" name="MATCH_ID">
-      <mandatory>1</mandatory>
-      <data-type>INTEGER(10)|4</data-type>
-    </column>
-    <column id="42" parent="16" name="COTE_ID">
-      <mandatory>1</mandatory>
-      <data-type>INTEGER(10)|4</data-type>
-    </column>
-    <column id="43" parent="16" name="MONTANT">
-      <data-type>INTEGER(10)|4</data-type>
-    </column>
-    <column id="44" parent="16" name="ID">
+    <column id="41" parent="16" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
       <default-expression>0</default-expression>
+    </column>
+    <column id="42" parent="16" name="MONTANT">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="43" parent="16" name="COTE_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="44" parent="16" name="MATCH_ID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
     </column>
     <index id="45" parent="16" name="SQL161116135717760">
       <name-surrogate>1</name-surrogate>
@@ -129,15 +129,15 @@ COTE_ID</columns>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="47" parent="16" name="PARI_MATCH_ID_FK">
-      <columns>MATCH_ID</columns>
-      <ref-key>~.MATCH.SQL161116104443070</ref-key>
+    <foreign-key id="47" parent="16" name="PARI_COTE_ID_FK">
+      <columns>COTE_ID</columns>
+      <ref-key>~.COTE.SQL161116104310960</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="48" parent="16" name="PARI_COTE_ID_FK">
-      <columns>COTE_ID</columns>
-      <ref-key>~.COTE.SQL161116104310960</ref-key>
+    <foreign-key id="48" parent="16" name="PARI_MATCH_ID_FK">
+      <columns>MATCH_ID</columns>
+      <ref-key>~.MATCH.SQL161116104443070</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Création d'un match</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+    <h3 style="text-align: center;">Création d'un match</h3>
+    <h:form class="form-style-1">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Id du match:"/>
+            <h:inputText value="#{MatchBean.match.id}"/>
+            <h:outputLabel value="Nom du match:"/>
+            <h:inputText value="#{MatchBean.match.nomMatch}"/>
+            <h:outputLabel value="Date:"/>
+            <h:inputText value="#{MatchBean.match.date}">
+                <f:convertDateTime pattern="dd--mm-yyyy"/>
+            </h:inputText>
+        </h:panelGrid>
+        <h:commandButton value="Creer un nouveau match" action="#{MatchBean.addNewMatch()}"/>
+    </h:form>
+
+    </h:dataTable>
+</h:body>
+</html>

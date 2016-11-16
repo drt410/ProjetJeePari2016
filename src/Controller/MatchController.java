@@ -33,4 +33,11 @@ public class MatchController {
         //return "employeeList.xhtml";
     }
 
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
 }

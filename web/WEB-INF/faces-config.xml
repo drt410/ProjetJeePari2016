@@ -15,8 +15,14 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>BookmalersBean</managed-bean-name>
+        <managed-bean-name>BookmakersBean</managed-bean-name>
         <managed-bean-class>Controller.BookmakersController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>MatchBean</managed-bean-name>
+        <managed-bean-class>Controller.MatchController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
 </faces-config>

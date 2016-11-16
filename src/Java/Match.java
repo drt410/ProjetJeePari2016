@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "MATCH")
-@NamedQuery(name = "findMatch", query = "SELECT m FROM Match m ")
+@NamedQuery(name = "findMatch", query = "SELECT m FROM Match m")
 public class Match implements Serializable {
     private static int countdown = 60000;
     @Id
@@ -23,7 +23,6 @@ public class Match implements Serializable {
     @OneToMany
     private List<Pari> pariList;
     private Timer timer;
-    private int i;
     private String nomMatch;
     private String lieuMatch;
     private Integer duree;
@@ -36,10 +35,6 @@ public class Match implements Serializable {
     }
 
     public Match() {
-    }
-
-    public void setDate(java.sql.Date date) {
-        this.date = date;
     }
 
     @Id
@@ -98,16 +93,6 @@ public class Match implements Serializable {
         this.lieuMatch = lieuMatch;
     }
 
-    @Basic
-    @Column(name = "DUREE")
-    public Integer getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Integer duree) {
-        this.duree = duree;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -119,7 +104,6 @@ public class Match implements Serializable {
         if (date != null ? !date.equals(match.date) : match.date != null) return false;
         if (nomMatch != null ? !nomMatch.equals(match.nomMatch) : match.nomMatch != null) return false;
         if (lieuMatch != null ? !lieuMatch.equals(match.lieuMatch) : match.lieuMatch != null) return false;
-        if (duree != null ? !duree.equals(match.duree) : match.duree != null) return false;
 
         return true;
     }
@@ -130,7 +114,16 @@ public class Match implements Serializable {
         result = 31 * result + (nomMatch != null ? nomMatch.hashCode() : 0);
         result = 31 * result + (lieuMatch != null ? lieuMatch.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (duree != null ? duree.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "DUREE")
+    public Integer getDuree() {
+        return duree;
+    }
+
+    public void setDuree(Integer duree) {
+        this.duree = duree;
     }
 }
