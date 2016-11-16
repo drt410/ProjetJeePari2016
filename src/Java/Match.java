@@ -25,6 +25,7 @@ public class Match implements Serializable {
     private static int countdown = 60000;
     private Timer timer;
     private int i;
+
     public Match(int id, Date date) {
         this.id = id;
         this.date = date;

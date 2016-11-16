@@ -13,11 +13,8 @@ import java.util.List;
 public class Parieur implements Serializable {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    @Column(name = "NOM_PARIEUR")
     private String nom;
-    @Column(name = "LIMCOINS_PARIEUR")
     private int limcoins;
     @OneToMany
     private List<Match> matchList;

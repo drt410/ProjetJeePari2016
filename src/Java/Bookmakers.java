@@ -10,7 +10,6 @@ import java.util.List;
 @NamedQuery(name = "findBookmakers", query = "SELECT b FROM Bookmakers b")
 public class Bookmakers implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String nom;
     @OneToMany

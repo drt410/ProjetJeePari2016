@@ -13,11 +13,12 @@ public class Cote implements Serializable {
     @Id
     private int id;
     private String score;
-    private String victoire;
-    private String defaite;
+    private float victoire;
+    private float defaite;
     private int nb_but;
 
-    public Cote(String score, String victoire, String defaite, int nb_but) {
+    public Cote(int id, String score, float victoire, float defaite, int nb_but) {
+        this.id = id;
         this.score = score;
         this.victoire = victoire;
         this.defaite = defaite;
@@ -43,19 +44,19 @@ public class Cote implements Serializable {
         this.score = score;
     }
 
-    public String getVictoire() {
+    public float getVictoire() {
         return victoire;
     }
 
-    public void setVictoire(String victoire) {
+    public void setVictoire(float victoire) {
         this.victoire = victoire;
     }
 
-    public String getDefaite() {
+    public float getDefaite() {
         return defaite;
     }
 
-    public void setDefaite(String defaite) {
+    public void setDefaite(float defaite) {
         this.defaite = defaite;
     }
 

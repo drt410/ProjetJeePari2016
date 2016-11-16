@@ -46,6 +46,7 @@ public class UtilisateurController {
 
    public void addNewUtilisateur() {
 
+
        if(utilisateur.getType().equals("Parieur")) {
            utilisateur = utilisateurEJB.addNew(utilisateur);
            parieur = new Parieur(utilisateur.getId(), utilisateur.getNom(), 1000, null, null);

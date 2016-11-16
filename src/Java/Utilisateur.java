@@ -7,17 +7,14 @@ import java.io.Serializable;
  * Created by tran on 31/10/2016.
  */
 @Entity
-@Table(name = "Utilisateur")
+@Table(name = "UTILISATEUR")
 @NamedQuery(name = "allUser", query = "SELECT u FROM Utilisateur u")
 public class Utilisateur implements Serializable {
 
     @Id
     private int id;
-    @Column(name = "NOM")
     private String nom;
-    @Column(name = "MOTDEPASSE")
     private String motdePasse;
-    @Column(name = "TYPE")
     private String type;
 
 

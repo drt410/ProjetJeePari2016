@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by tran on 26/10/2016.
  */
-@Entity
+
 public class Administrateur implements Serializable {
 
     private int id;
@@ -27,7 +27,6 @@ public class Administrateur implements Serializable {
 
     }
 
-    @Id
     public int getId() {
         return id;
     }
