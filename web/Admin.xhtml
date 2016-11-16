@@ -18,7 +18,7 @@
             <h:outputLabel value="Nom : "/>
             <h:inputText value="#{UserBean.utilisateur.nom}"/>
             <h:outputLabel value="Mot de passe :"/>
-            <h:inputText value="#{UserBean.utilisateur.motdePasse}"/>
+            <h:inputText value="#{UserBean.utilisateur.motdepasse}"/>
             <h:outputLabel value="Type:"/>
             <h:inputText value="#{UserBean.utilisateur.type}"/>
         </h:panelGrid>
@@ -43,7 +43,7 @@
             <f:facet name="header">
                 <h:outputText value="Mot de Passe"/>
             </f:facet>
-            <h:outputText value="#{user.motdePasse}"/>
+            <h:outputText value="#{user.motdepasse}"/>
         </h:column>
         <h:column>
             <f:facet name="header">
@@ -53,9 +53,9 @@
         </h:column>
         <h:column>
             <h:commandLink value="edit"
-                           action="#{uc.editUser(usr)}" /> |
+                           action="#{user.editUser(user)}" /> |
             <h:commandLink value="delete"
-                           action="#{uc.deleteUser(usr)}" />
+                           action="#{user.deleteUser(user)}" />
         </h:column>
     </h:dataTable>
     <h3 style="text-align: center;">Liste de Parieur</h3>

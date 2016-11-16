@@ -56,7 +56,6 @@ public class UtilisateurController {
         else if(utilisateur.getType().equals("Bookmakers")) {
            utilisateur = utilisateurEJB.addNew(utilisateur);
             bookmakers = new Bookmakers(utilisateur.getId(),utilisateur.getNom(), null);
-
             bookmakers = bookmakersEJB.addNew(bookmakers);
         }
         utilisateurList = utilisateurEJB.findUtilisateur();

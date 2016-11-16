@@ -11,8 +11,8 @@ import java.util.List;
 @Table(name = "PARIEUR")
 @NamedQuery(name = "findParieur", query = "SELECT p FROM Parieur p")
 public class Parieur implements Serializable {
+
     @Id
-    @Column(name = "ID")
     private int id;
     private String nom;
     private int limcoins;
@@ -20,7 +20,6 @@ public class Parieur implements Serializable {
     private List<Match> matchList;
     @OneToMany
     private List<Pari> pariList;
-
     public Parieur() {
     }
 
@@ -32,6 +31,10 @@ public class Parieur implements Serializable {
         this.pariList = pariList;
     }
 
+    public void setLimcoins(Integer limcoins) {
+        this.limcoins = limcoins;
+    }
+
     public int parier(int montant)
     {
         int mise;
@@ -39,6 +42,8 @@ public class Parieur implements Serializable {
 
         return mise;
     }
+    @Id
+    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -47,6 +52,8 @@ public class Parieur implements Serializable {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "NOM")
     public String getNom() {
         return nom;
     }
@@ -55,6 +62,8 @@ public class Parieur implements Serializable {
         this.nom = nom;
     }
 
+    @Basic
+    @Column(name = "LIMCOINS")
     public int getLimcoins() {
         return limcoins;
     }
@@ -77,5 +86,27 @@ public class Parieur implements Serializable {
 
     public void setPariList(List<Pari> pariList) {
         this.pariList = pariList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Parieur parieur = (Parieur) o;
+
+        if (id != parieur.id) return false;
+        if (limcoins != parieur.limcoins) return false;
+        if (nom != null ? !nom.equals(parieur.nom) : parieur.nom != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + limcoins;
+        return result;
     }
 }

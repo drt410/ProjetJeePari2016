@@ -15,7 +15,7 @@ import java.util.List;
  */
 @ManagedBean
 @RequestScoped
-public class ParieurController implements Serializable {
+public class ParieurController {
 
     @EJB
     private ParieurEJB parieurEJB;

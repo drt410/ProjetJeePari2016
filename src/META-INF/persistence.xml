@@ -4,8 +4,13 @@
     <persistence-unit name="PersistenceUnit">
         <class>Java.Utilisateur</class>
         <class>Java.Parieur</class>
+        <class>Java.Bookmakers</class>
+        <class>Java.Cote</class>
+        <class>Java.Match</class>
+        <class>Java.Pari</class>
+        <class>Java.Booke</class>
+        <class>Java.Participe</class>
         <properties>
-
             <property name="eclipselink.target-database" value="DERBY"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
@@ -14,7 +19,10 @@
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.user" value ="app"/>
             <property name="javax.persistence.jdbc.password" value ="app"/>
-
+            <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/ProjetJeeDb;create=true"/>
+            <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="eclipselink.jdbc.user" value ="app"/>
+            <property name="eclipselink.jdbc.password" value ="app"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -11,23 +11,42 @@ import java.io.Serializable;
 @NamedQuery(name = "allUser", query = "SELECT u FROM Utilisateur u")
 public class Utilisateur implements Serializable {
 
-    @Id
     private int id;
     private String nom;
     private String motdePasse;
     private String type;
+    /*public String getCompte() {
+        return compte;
+    }
 
+    public void setCompte(String compte) {
+        this.compte = compte;
+    }*/
+    private String motdepasse;
 
-    public Utilisateur(int id, String nom, String motdePasse, String type) {
+    public Utilisateur(int id, String nom, String motdepasse, String type) {
         this.id = id;
         this.nom = nom;
-        this.motdePasse = motdePasse;
+        this.motdepasse = motdepasse;
         this.type = type;
     }
 
     public Utilisateur() {
     }
 
+
+    @Basic
+    @Column(name = "MOTDEPASSE")
+    public String getMotdepasse() {
+        return motdepasse;
+    }
+
+    public void setMotdepasse(String motdepasse) {
+        this.motdepasse = motdepasse;
+    }
+
+    @Id
+    @Column(name = "ID")
     public int getId() {
         return id;
     }
@@ -36,6 +55,8 @@ public class Utilisateur implements Serializable {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "NOM")
     public String getNom() {
         return nom;
     }
@@ -44,14 +65,8 @@ public class Utilisateur implements Serializable {
         this.nom = nom;
     }
 
-    public String getMotdePasse() {
-        return motdePasse;
-    }
-
-    public void setMotdePasse(String motdePasse) {
-        this.motdePasse = motdePasse;
-    }
-
+    @Basic
+    @Column(name = "TYPE")
     public String getType() {
         return type;
     }
@@ -60,11 +75,27 @@ public class Utilisateur implements Serializable {
         this.type = type;
     }
 
-    /*public String getCompte() {
-        return compte;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Utilisateur that = (Utilisateur) o;
+
+        if (id != that.id) return false;
+        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        if (motdepasse != null ? !motdepasse.equals(that.motdepasse) : that.motdepasse != null) return false;
+
+        return true;
     }
 
-    public void setCompte(String compte) {
-        this.compte = compte;
-    }*/
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + (motdepasse != null ? motdepasse.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 }
