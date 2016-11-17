@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by tran on 31/10/2016.
  */
-@ManagedBean(name = "UserBean")
+@ManagedBean
 @SessionScoped
 public class UtilisateurController {
     @EJB

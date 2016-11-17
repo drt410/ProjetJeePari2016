@@ -15,8 +15,10 @@ public class Pari implements Serializable {
     private int montant;
     @OneToOne
     private Match match;
-    @OneToOne
+    @OneToOne(mappedBy = "pari")
     private Cote cote;
+    @ManyToOne
+    private Parieur parieur;
 /*
     public List<Parieur> getParieurList() {
         return parieurList;
@@ -30,11 +32,14 @@ public class Pari implements Serializable {
    private List<Parieur> parieurList;*/
     private int matchId;
 
-    public Pari(int id, int montant, Match match, Cote cote) {
+    public Pari(int id, int montant, Match match, Cote cote, Parieur parieur, int coteId, int matchId) {
         this.id = id;
         this.montant = montant;
         this.match = match;
         this.cote = cote;
+        this.parieur = parieur;
+        this.coteId = coteId;
+        this.matchId = matchId;
     }
 
     public Pari() {

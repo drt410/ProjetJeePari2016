@@ -24,5 +24,9 @@
         <managed-bean-class>Controller.MatchController</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-
+    <managed-bean>
+        <managed-bean-name>CoteBean</managed-bean-name>
+        <managed-bean-class>Controller.CoteController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

@@ -18,7 +18,7 @@ public class Parieur implements Serializable {
     private int limcoins;
     @OneToMany
     private List<Match> matchList;
-    @OneToMany
+    @OneToMany(mappedBy = "parieur")
     private List<Pari> pariList;
     public Parieur() {
     }

@@ -26,6 +26,8 @@ public class Match implements Serializable {
     private String nomMatch;
     private String lieuMatch;
     private Integer duree;
+    @OneToOne(mappedBy = "match")
+    private Pari pari;
 
     public Match(int id, Date date) {
         this.id = id;

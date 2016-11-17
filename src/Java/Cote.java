@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Table(name = "COTE")
 @NamedQuery(name = "findCote", query = "SELECT c FROM Cote c")
 public class Cote implements Serializable {
+    @Id
     private int id;
     private String score;
     private float victoire;
@@ -19,6 +20,10 @@ public class Cote implements Serializable {
     private Double victoireCote;
     private Double defaiteCote;
     private Integer nbButCote;
+    @OneToOne
+    @JoinColumn(name = "PARI_ID")
+    private Pari pari;
+    private Integer pariId;
 
     public Cote(int id, String score, float victoire, float defaite, int nb_but) {
         this.id = id;
@@ -105,5 +110,15 @@ public class Cote implements Serializable {
         result = 31 * result + (defaiteCote != null ? defaiteCote.hashCode() : 0);
         result = 31 * result + (nbButCote != null ? nbButCote.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "PARI_ID")
+    public Integer getPariId() {
+        return pariId;
+    }
+
+    public void setPariId(Integer pariId) {
+        this.pariId = pariId;
     }
 }
