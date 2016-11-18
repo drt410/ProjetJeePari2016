@@ -4,25 +4,175 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Création d'un match</title>
     <link href="style.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <h:body>
+
+    <h:panelGroup rendered="#{!MatchBean.edit}">
     <h3 style="text-align: center;">Création d'un match</h3>
     <h:form class="form-style-1">
         <h:panelGrid columns="2">
             <h:outputLabel value="Id du match:"/>
-            <h:inputText value="#{MatchBean.match.id}"/>
+            <h:inputText value="#{MatchBean.match.id}" required="true"/>
             <h:outputLabel value="Nom du match:"/>
-            <h:inputText value="#{MatchBean.match.nomMatch}"/>
+            <h:inputText value="#{MatchBean.match.nomMatch}" required="true"/>
+            <h:outputLabel value="Lieu du match:"/>
+            <h:inputText value="#{MatchBean.match.lieuMatch}" required="true"/>
             <h:outputLabel value="Date:"/>
-            <h:inputText value="#{MatchBean.match.date}">
-                <f:convertDateTime pattern="dd--mm-yyyy"/>
-            </h:inputText>
-        </h:panelGrid>
+            <p:calendar value="#{MatchBean.match.date}" pattern="dd/MM/yyyy HH:mm"/>
         <h:commandButton value="Creer un nouveau match" action="#{MatchBean.addNewMatch()}"/>
+    </h:panelGrid>
+    </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup rendered="#{MatchBean.edit}">
+        <h3 style="text-align: center;">Mis à jour d'un match</h3>
+        <h:form class="form-style-1">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Id du match:"/>
+                <h:inputText value="#{MatchBean.match.id}" required="true"/>
+                <h:outputLabel value="Nom du match:"/>
+                <h:inputText value="#{MatchBean.match.nomMatch}" required="true"/>
+                <h:outputLabel value="Date:"/>
+                <p:calendar value="#{MatchBean.match.date}" pattern="dd/MM/yyyy"/>
+                <h:commandButton value="Save"
+                                 action="#{MatchBean.saveMatch()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+    <h:form rendered="#{not empty MatchBean.matchList}">
+        <h3 style="text-align: center;">Liste de Match</h3>
+        <h:dataTable  value="#{MatchBean.matchList}" var="mat"  border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{mat.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nom du match"/>
+                </f:facet>
+                <h:outputText value="#{mat.nomMatch}"/>
+            </h:column>
+            <h:column>
+            <f:facet name="header">
+                <h:outputText value="Lieu du match"/>
+            </f:facet>
+            <h:outputText value="#{mat.lieuMatch}"/>
+        </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Date du match"/>
+                </f:facet>
+                <h:outputText value="#{mat.date}"><f:convertDateTime pattern="dd/mm/yyyy" /></h:outputText>
+            </h:column>
+            <h:column>
+                <h:commandLink value="edit"
+                               action="#{MatchBean.editMatch(mat)}" /> |
+                <h:commandLink value="delete"
+                               action="#{MatchBean.deleteMatch(mat)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+    <h:panelGroup rendered="#{not empty MatchBean.matchList}">
+        <h3 style="text-align: center;">Création d'une cote</h3>
+        <h:form class="form-style-1">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="id : "/>
+                <h:inputText value="#{CoteBean.cote.id}"/>
+                <h:outputLabel value="Score : "/>
+                <h:inputText value="#{CoteBean.cote.scoreCote}"/>
+                <h:outputLabel value="victoire:"/>
+                <h:inputText value="#{CoteBean.cote.victoireCote}"/>
+                <h:outputLabel value="defaite:"/>
+                <h:inputText value="#{CoteBean.cote.defaiteCote}"/>
+                <h:outputLabel value="Nonbre de But:"/>
+                <h:inputText value="#{CoteBean.cote.nbButCote}"/>
+                <h:commandButton value="Créer Nouvelle Cote"
+                                 action="#{CoteBean.addNewCote()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup rendered="#{CoteBean.edit}">
+        <h3 style="text-align: center;">Mis à jour d'une cote</h3>
+        <h:form class="form-style-1">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="id : "/>
+                <h:inputText value="#{CoteBean.cote.id}"/>
+                <h:outputLabel value="Score : "/>
+                <h:inputText value="#{CoteBean.cote.scoreCote}"/>
+                <h:outputLabel value="victoire:"/>
+                <h:inputText value="#{CoteBean.cote.victoireCote}"/>
+                <h:outputLabel value="defaite:"/>
+                <h:inputText value="#{CoteBean.cote.defaiteCote}"/>
+                <h:outputLabel value="Nonbre de But:"/>
+                <h:inputText value="#{CoteBean.cote.nbButCote}"/>
+                <h:commandButton value="Save"
+                                 action="#{CoteBean.saveCote()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+    <h:form rendered="#{not empty CoteBean.coteList}">
+        <h3 style="text-align: center;">Liste de Cote</h3>
+        <h:dataTable  value="#{CoteBean.coteList}" var="cot"  border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{cot.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Score"/>
+                </f:facet>
+                <h:outputText value="#{cot.scoreCote}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Victoire"/>
+                </f:facet>
+                <h:outputText value="#{cot.victoireCote}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Defaite"/>
+                </f:facet>
+                <h:outputText value="#{cot.defaiteCote}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Nombre de But"/>
+                </f:facet>
+                <h:outputText value="#{cot.nbButCote}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Pari"/>
+                </f:facet>
+                <h:outputText value="#{cot.pariId}"/>
+            </h:column>
+            <h:column>
+                <h:commandLink value="edit"
+                               action="#{CoteBean.editCote(cot)}" /> |
+                <h:commandLink value="delete"
+                               action="#{CoteBean.deleteCote(cot)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:form class="form-style-1">
+        <h:panelGrid>
+            <h:commandButton value="Retourner au menu principal"
+                             action="index.xhtml"
+                             style="width:250px"/>
+        </h:panelGrid>
     </h:form>
 </h:body>
 </html>

@@ -1,7 +1,9 @@
 package Controller;
 
 import EJBclasse.MatchEJB;
+import Java.Cote;
 import Java.Match;
+import Java.Match2;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -18,11 +20,11 @@ public class MatchController {
 
     @EJB
     private MatchEJB matchEJB;
-    private Match match;
-    private List<Match> matchList = new ArrayList<>();
+    private Match2 match = new Match2();
+    private List<Match2> matchList = new ArrayList<>();
+    private boolean edit;
 
-    public List<Match> getMatchList(){
-
+    public List<Match2> getMatchList(){
         matchList = matchEJB.findMatch();
         return  matchList;
     }
@@ -33,11 +35,39 @@ public class MatchController {
         //return "employeeList.xhtml";
     }
 
-    public Match getMatch() {
+
+    public Match2 getMatch() {
         return match;
     }
 
-    public void setMatch(Match match) {
+    public void setMatch(Match2 match) {
         this.match = match;
+    }
+
+    public String viewMatch(){
+        return "Match.xhtml";
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public void editMatch(Match2 matc) {
+        match=matc;
+        edit=true;
+    }
+
+    public void deleteMatch(Match2 match) {
+        matchEJB.deleteMatch(match);
+        matchList.remove(match);
+    }
+
+    public void saveMatch(){
+        matchEJB.updateMatch(match);
+        edit=false;
     }
 }

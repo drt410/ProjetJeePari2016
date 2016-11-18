@@ -11,7 +11,7 @@ import java.util.List;
  * Created by tran on 31/10/2016.
  */
 @Entity
-@Table(name = "MATCH")
+@Table(name = "MATCH2")
 @NamedQuery(name = "findMatch", query = "SELECT m FROM Match m")
 public class Match implements Serializable {
     private static int countdown = 60000;

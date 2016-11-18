@@ -16,7 +16,7 @@ public class PariEJB {
     @PersistenceContext(unitName = "PersistenceUnit")
     private EntityManager entityManager;
 
-    public List<Pari> findObjets(){
+    public List<Pari> findPari(){
         TypedQuery<Pari> query = entityManager.createNamedQuery("findPari", Pari.class);
         return query.getResultList();
     }

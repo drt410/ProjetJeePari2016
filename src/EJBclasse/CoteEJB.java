@@ -20,7 +20,13 @@ public class CoteEJB {
         TypedQuery<Cote> query = entityManager.createNamedQuery("findCote", Cote.class);
         return query.getResultList();
     }
+    public Cote updateCote(Cote cote) {
+        return entityManager.merge(cote);
+    }
 
+    public void deleteCote(Cote cote) {
+        entityManager.remove(entityManager.merge(cote));
+    }
 
     public Cote getCoteById(int id) {
         return entityManager.find(Cote.class, id);

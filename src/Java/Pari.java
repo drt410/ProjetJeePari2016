@@ -12,27 +12,21 @@ import java.io.Serializable;
 public class Pari implements Serializable {
     @Id
     private int id;
-    private int montant;
+    private Double montant;
     @OneToOne
     private Match match;
     @OneToOne(mappedBy = "pari")
     private Cote cote;
+
+    private Double taux;
+
     @ManyToOne
     private Parieur parieur;
-/*
-    public List<Parieur> getParieurList() {
-        return parieurList;
-    }
-
-    public void setParieurList(List<Parieur> parieurList) {
-        this.parieurList = parieurList;
-    }*/
+    private String vainqueur;
     private int coteId;
-/*    @OneToMany
-   private List<Parieur> parieurList;*/
     private int matchId;
 
-    public Pari(int id, int montant, Match match, Cote cote, Parieur parieur, int coteId, int matchId) {
+    public Pari(int id, Double montant, Match match, Cote cote, Parieur parieur, int coteId, int matchId) {
         this.id = id;
         this.montant = montant;
         this.match = match;
@@ -44,6 +38,30 @@ public class Pari implements Serializable {
 
     public Pari() {
 
+    }
+
+    public Double getTaux() {
+        return taux;
+    }
+
+    public void setTaux(Double taux) {
+        this.taux = taux;
+    }
+
+    public Parieur getParieur() {
+        return parieur;
+    }
+
+    public void setParieur(Parieur parieur) {
+        this.parieur = parieur;
+    }
+
+    public String getVainqueur() {
+        return vainqueur;
+    }
+
+    public void setVainqueur(String vainqueur) {
+        this.vainqueur = vainqueur;
     }
 
     @Id
@@ -58,11 +76,11 @@ public class Pari implements Serializable {
 
     @Basic
     @Column(name = "MONTANT")
-    public int getMontant() {
+    public Double getMontant() {
         return montant;
     }
 
-    public void setMontant(int montant) {
+    public void setMontant(Double montant) {
         this.montant = montant;
     }
 
@@ -118,7 +136,7 @@ public class Pari implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = montant;
+        int result = id;
         result = 31 * result + coteId;
         result = 31 * result + matchId;
         return result;

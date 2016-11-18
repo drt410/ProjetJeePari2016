@@ -113,11 +113,11 @@ public class UtilisateurController {
     public void setEdit(boolean edit) {
         this.edit = edit;
     }
-/*
+
     public void editUser(Utilisateur usr) {
-        Utilisateur=usr;
+        utilisateur=usr;
         edit=true;
-    }*/
+    }
 
     public void deleteUser(Utilisateur usr) {
         utilisateurEJB.deleteUser(usr);

@@ -5,7 +5,26 @@
       <driver-ref>derby.remote</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.apache.derby.jdbc.ClientDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby://localhost:1527/C:/glassfish4/javadb/bin/ProjetJeeDb;create=true</jdbc-url>
+      <jdbc-url>jdbc:derby://localhost:1527/ProjetJeeDb;create=true</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="PersistenceUnit/EclipseLink" uuid="b59390ef-f949-4ed1-8c34-8e4fab6bec10">
+      <driver-ref>derby.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/out/artifacts/ProjetJeePari2016_ejb_exploded/META-INF/persistence.xml</remarks>
+      <jdbc-driver>org.apache.derby.jdbc.ClientDriver</jdbc-driver>
+      <jdbc-url>jdbc:derby://localhost:1527/ProjetJeeDb;create=true</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derby-license.txt</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derby-10.11.1.1.jar</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/derbyclient-10.11.1.1.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

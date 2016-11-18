@@ -20,6 +20,7 @@ public class BookmakersController {
     private BookmakersEJB bookmakersEJB;
     private Bookmakers bookmakers;
     private List<Bookmakers> bookmakersList = new ArrayList<>();
+    private boolean edit;
 
     public List<Bookmakers> getBookmakersList(){
 
@@ -46,5 +47,28 @@ public class BookmakersController {
 
     public void setBookmakersList(List<Bookmakers> bookmakersList) {
         this.bookmakersList = bookmakersList;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public void editBookmakers(Bookmakers bookmaker) {
+        bookmakers=bookmaker;
+        edit=true;
+    }
+
+    public void deleteBookmakers(Bookmakers bookmaker) {
+        bookmakersEJB.deleteBookmakers(bookmaker);
+        bookmakersList.remove(bookmaker);
+    }
+
+    public void saveBookmakers(){
+        bookmakersEJB.updateBookmakers(bookmakers);
+        edit=false;
     }
 }

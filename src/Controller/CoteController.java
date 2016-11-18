@@ -19,8 +19,10 @@ public class CoteController implements Serializable {
 
     @EJB
     private CoteEJB coteEJB;
-    private Cote cote;
+    private Cote cote = new Cote();
     private List<Cote> coteList = new ArrayList<>();
+    private boolean edit;
+    private boolean create;
 
         public List<Cote> getCoteList(){
 
@@ -34,6 +36,10 @@ public class CoteController implements Serializable {
         //return "employeeList.xhtml";
     }
 
+    public String viewCote(){
+        return "Cote.xhtml";
+    }
+
     public Cote getCote() {
         return cote;
     }
@@ -44,5 +50,36 @@ public class CoteController implements Serializable {
 
     public void setCoteList(List<Cote> coteList) {
         this.coteList = coteList;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public boolean isCreate() {
+        return create;
+    }
+
+    public void setCreate(boolean create) {
+        this.create = create;
+    }
+
+    public void editCote(Cote cot) {
+        cote=cot;
+        edit=true;
+    }
+
+    public void deleteCote(Cote cot) {
+        coteEJB.deleteCote(cot);
+        coteList.remove(cot);
+    }
+
+    public void saveCote(){
+        coteEJB.updateCote(cote);
+        edit=false;
     }
 }

@@ -6,7 +6,6 @@ import Java.Parieur;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class ParieurController {
     private ParieurEJB parieurEJB;
     private Parieur parieur;
     private List<Parieur> parieurList = new ArrayList<>();
+    private boolean edit;
 
         public List<Parieur> getParieurList(){
 
@@ -44,5 +44,28 @@ public class ParieurController {
 
     public void setParieurList(List<Parieur> parieurList) {
         this.parieurList = parieurList;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+    }
+
+    public void editParieur(Parieur parieu) {
+        parieur=parieu;
+        edit=true;
+    }
+
+    public void deleteParieur(Parieur parieu) {
+        parieurEJB.deleteParieur(parieu);
+        parieurList.remove(parieu);
+    }
+
+    public void saveParieur(){
+        parieurEJB.updateParieur(parieur);
+        edit=false;
     }
 }

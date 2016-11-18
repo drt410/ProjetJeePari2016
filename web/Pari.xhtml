@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<f:view>
+    <h3 style="text-align: center;">Ajout d'un nouveau pari</h3>
+    <h:form class="form-style-1">
+    <h:panelGrid columns="2">
+
+    Montant: <h:inputText value="#{PariBean.pari.montant}" required="true"/>
+    Match: <h:inputText value="#{PariBean.pari.match.nomMatch}" required="true"/>
+    Cote: <h:inputText value="#{PariBean.pari.cote}" required="true"/>
+    <h:commandButton value="Ajouter un nouveau pari" action="#{PariBean.addNewPari()}"/>
+
+    </h:panelGrid>
+    </h:form>
+
+    <h:form class="form-style-1">
+        <h:panelGrid>
+            <h:commandButton value="Retourner au menu principal"
+                             action="index.xhtml"
+                             style="width:250px"/>
+        </h:panelGrid>
+    </h:form>
+</f:view>
+</html>

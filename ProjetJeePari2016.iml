@@ -23,9 +23,9 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
-          <factory-entry name="PersistenceUnit" value="5bdc7ab3-703a-4008-9397-2cb5c3d9c539" />
+          <factory-entry name="PersistenceUnit" value="b59390ef-f949-4ed1-8c34-8e4fab6bec10" />
         </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/out/artifacts/ProjetJeePari2016_ejb_exploded/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>
     </facet>
     <facet type="javaeeApplication" name="javaEEApplication">
@@ -49,5 +49,14 @@
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.11 - JSF" level="application_server_libraries" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="JPA 2.0-2.0" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/primefaces-6.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

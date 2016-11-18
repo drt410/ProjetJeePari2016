@@ -1,7 +1,9 @@
 package Controller;
 
+import EJBclasse.CoteEJB;
+import EJBclasse.MatchEJB;
 import EJBclasse.PariEJB;
-import Java.Pari;
+import Java.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -17,18 +19,42 @@ import java.util.List;
 public class PariController {
     @EJB
     private PariEJB pariEJB;
+    @EJB
+    private CoteEJB coteEJB;
+    @EJB
+    private MatchEJB matchEJB;
+    private Cote cote;
     private Pari pari;
+    private Parieur parieur;
+    private Match2 match2;
     private List<Pari> pariList = new ArrayList<>();
+    private List<Cote> coteList = new ArrayList<>();
+    private List<Match2> matchList = new ArrayList<>();
 
-    public List<Pari> getVendeurList(){
 
-        pariList = pariEJB.findObjets();
+    public List<Pari> getPariList(){
+
+        pariList = pariEJB.findPari();
         return  pariList;
     }
 
+    public Double Parier(){
+        Double coef =match2.getCoteList().get(cote.getId()).getVictoireCote();
+        Double somme= parieur.miser(0)*coef;
+        return somme;
+
+
+    }
+    public String viewPari(){
+        return "Pari.xhtml";
+    }
+
     public void addNewPari() {
+        pari.setMontant(Parier());
         pari = pariEJB.addNew(pari);
-        pariList = pariEJB.findObjets();
+        coteList=coteEJB.findCote();
+        matchList=matchEJB.findMatch();
+        pariList = pariEJB.findPari() ;
         //return "employeeList.xhtml";
     }
 
@@ -40,9 +66,6 @@ public class PariController {
         this.pari = pari;
     }
 
-    public List<Pari> getPariList() {
-        return pariList;
-    }
 
     public void setPariList(List<Pari> pariList) {
         this.pariList = pariList;

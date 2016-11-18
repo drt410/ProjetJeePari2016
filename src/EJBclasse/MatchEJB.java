@@ -1,6 +1,8 @@
 package EJBclasse;
 
+import Java.Cote;
 import Java.Match;
+import Java.Match2;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -16,17 +18,26 @@ public class MatchEJB {
     @PersistenceContext(unitName = "PersistenceUnit")
     private EntityManager entityManager;
 
-    public List<Match> findMatch(){
-        TypedQuery<Match> query = entityManager.createNamedQuery("findMatch", Match.class);
+    public List<Match2> findMatch(){
+        TypedQuery<Match2> query = entityManager.createNamedQuery("findMatch", Match2.class);
         return query.getResultList();
     }
-
-
-    public Match getMatchById(int id) {
-        return entityManager.find(Match.class, id);
+    public Match2 updateMatch(Match2 match2) {
+        return entityManager.merge(match2);
     }
-    public Match addNew(Match match) {
+
+    public void deleteMatch(Match2 match2) {
+        entityManager.remove(entityManager.merge(match2));
+    }
+
+
+    public Match2 getMatchById(int id) {
+        return entityManager.find(Match2.class, id);
+    }
+    public Match2 addNew(Match2 match) {
         entityManager.persist(match);
         return match;
     }
+
+
 }

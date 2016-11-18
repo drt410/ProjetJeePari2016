@@ -12,10 +12,6 @@ import java.io.Serializable;
 public class Cote implements Serializable {
     @Id
     private int id;
-    private String score;
-    private float victoire;
-    private float defaite;
-    private int nb_but;
     private String scoreCote;
     private Double victoireCote;
     private Double defaiteCote;
@@ -23,14 +19,17 @@ public class Cote implements Serializable {
     @OneToOne
     @JoinColumn(name = "PARI_ID")
     private Pari pari;
+    @ManyToOne
+    private Match2 match;
+
     private Integer pariId;
 
-    public Cote(int id, String score, float victoire, float defaite, int nb_but) {
+    public Cote(int id, String scoreCote, Double victoireCote, Double defaiteCote, Integer nbButCote) {
         this.id = id;
-        this.score = score;
-        this.victoire = victoire;
-        this.defaite = defaite;
-        this.nb_but = nb_but;
+        this.scoreCote = scoreCote;
+        this.victoireCote = victoireCote;
+        this.defaiteCote = defaiteCote;
+        this.nbButCote = nbButCote;
     }
 
     public Cote() {

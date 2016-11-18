@@ -18,225 +18,247 @@
     <table id="13" parent="1" name="BOOKMAKERS"/>
     <table id="14" parent="1" name="COTE"/>
     <table id="15" parent="1" name="MATCH"/>
-    <table id="16" parent="1" name="PARI"/>
-    <table id="17" parent="1" name="PARIER"/>
-    <table id="18" parent="1" name="PARIEUR"/>
-    <table id="19" parent="1" name="PARTICIPANTS"/>
-    <table id="20" parent="1" name="PARTICIPE"/>
-    <table id="21" parent="1" name="UTILISATEUR"/>
-    <column id="22" parent="12" name="BOOKMAKER_ID">
+    <table id="16" parent="1" name="MATCH2"/>
+    <table id="17" parent="1" name="PARI"/>
+    <table id="18" parent="1" name="PARIER"/>
+    <table id="19" parent="1" name="PARIEUR"/>
+    <table id="20" parent="1" name="PARTICIPANTS"/>
+    <table id="21" parent="1" name="PARTICIPE"/>
+    <table id="22" parent="1" name="UTILISATEUR"/>
+    <column id="23" parent="12" name="BOOKMAKER_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="23" parent="12" name="COTE_ID">
+    <column id="24" parent="12" name="COTE_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <key id="24" parent="12" name="BOOKE_PK">
+    <key id="25" parent="12" name="BOOKE_PK">
       <columns>BOOKMAKER_ID
 COTE_ID</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="25" parent="12" name="BOOKE_BOOKMAKERS_ID_FK">
+    <foreign-key id="26" parent="12" name="BOOKE_BOOKMAKERS_ID_FK">
       <columns>BOOKMAKER_ID</columns>
       <ref-key>~.BOOKMAKERS.SQL161116120431620</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="26" parent="12" name="BOOKE_COTE_ID_FK">
+    <foreign-key id="27" parent="12" name="BOOKE_COTE_ID_FK">
       <columns>COTE_ID</columns>
       <ref-key>~.COTE.SQL161116104310960</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="27" parent="13" name="ID">
+    <column id="28" parent="13" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="28" parent="13" name="NOM">
+    <column id="29" parent="13" name="NOM">
       <data-type>VARCHAR(255)|12</data-type>
     </column>
-    <key id="29" parent="13" name="SQL161116120431620">
+    <key id="30" parent="13" name="SQL161116120431620">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <column id="30" parent="14" name="ID">
+    <column id="31" parent="14" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="31" parent="14" name="SCORE_COTE">
+    <column id="32" parent="14" name="SCORE_COTE">
       <data-type>VARCHAR(25)|12</data-type>
     </column>
-    <column id="32" parent="14" name="VICTOIRE_COTE">
+    <column id="33" parent="14" name="VICTOIRE_COTE">
       <data-type>DOUBLE(52)|8</data-type>
     </column>
-    <column id="33" parent="14" name="DEFAITE_COTE">
+    <column id="34" parent="14" name="DEFAITE_COTE">
       <data-type>DOUBLE(52)|8</data-type>
     </column>
-    <column id="34" parent="14" name="NB_BUT_COTE">
+    <column id="35" parent="14" name="NB_BUT_COTE">
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="35" parent="14" name="PARI_ID">
+    <column id="36" parent="14" name="PARI_ID">
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <key id="36" parent="14" name="SQL161116104310960">
+    <key id="37" parent="14" name="SQL161116104310960">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="37" parent="14" name="COTE_PARI_ID_FK">
+    <foreign-key id="38" parent="14" name="COTE_PARI_ID_FK">
       <columns>PARI_ID</columns>
       <ref-key>~.PARI.PARI_ID_PK</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="38" parent="15" name="ID">
+    <column id="39" parent="15" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="39" parent="15" name="NOM_MATCH">
+    <column id="40" parent="15" name="NOM_MATCH">
       <data-type>VARCHAR(25)|12</data-type>
     </column>
-    <column id="40" parent="15" name="LIEU_MATCH">
+    <column id="41" parent="15" name="LIEU_MATCH">
       <data-type>VARCHAR(25)|12</data-type>
     </column>
-    <column id="41" parent="15" name="DATE">
+    <column id="42" parent="15" name="DATE">
       <data-type>DATE(10)|91</data-type>
     </column>
-    <column id="42" parent="15" name="DUREE">
+    <column id="43" parent="15" name="DUREE">
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <key id="43" parent="15" name="SQL161116104443070">
+    <key id="44" parent="15" name="SQL161116104443070">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <column id="44" parent="16" name="MATCH_ID">
+    <column id="45" parent="16" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="45" parent="16" name="COTE_ID">
+    <column id="46" parent="16" name="NOM_MATCH">
+      <data-type>VARCHAR(25)|12</data-type>
+    </column>
+    <column id="47" parent="16" name="LIEU_MATCH">
+      <data-type>VARCHAR(25)|12</data-type>
+    </column>
+    <column id="48" parent="16" name="DUREE">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="49" parent="16" name="DATE">
+      <data-type>DATE(10)|91</data-type>
+    </column>
+    <key id="50" parent="16" name="SQL161117160633790">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="51" parent="17" name="MATCH_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="46" parent="16" name="MONTANT">
+    <column id="52" parent="17" name="COTE_ID">
+      <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="47" parent="16" name="ID">
+    <column id="53" parent="17" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
       <default-expression>0</default-expression>
     </column>
-    <index id="48" parent="16" name="SQL161116135717760">
+    <column id="54" parent="17" name="MONTANT">
+      <data-type>DOUBLE(52)|8</data-type>
+    </column>
+    <index id="55" parent="17" name="SQL161116135717760">
       <name-surrogate>1</name-surrogate>
       <columns>MATCH_ID
 COTE_ID</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="49" parent="16" name="PARI_ID_PK">
+    <key id="56" parent="17" name="PARI_ID_PK">
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="50" parent="16" name="PARI_MATCH_ID_FK">
+    <foreign-key id="57" parent="17" name="PARI_MATCH_ID_FK">
       <columns>MATCH_ID</columns>
-      <ref-key>~.MATCH.SQL161116104443070</ref-key>
+      <ref-key>~.MATCH2.SQL161117160633790</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="51" parent="16" name="PARI_COTE_ID_FK">
+    <foreign-key id="58" parent="17" name="PARI_COTE_ID_FK">
       <columns>COTE_ID</columns>
       <ref-key>~.COTE.SQL161116104310960</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="52" parent="17" name="PARIEUR_ID">
+    <column id="59" parent="18" name="PARIEUR_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="53" parent="17" name="PARI_ID">
+    <column id="60" parent="18" name="PARI_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <key id="54" parent="17" name="PARIER_PK">
+    <key id="61" parent="18" name="PARIER_PK">
       <columns>PARIEUR_ID
 PARI_ID</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="55" parent="17" name="PARIER_PARIEUR_ID_FK">
+    <foreign-key id="62" parent="18" name="PARIER_PARIEUR_ID_FK">
       <columns>PARIEUR_ID</columns>
       <ref-key>~.PARIEUR.SQL161116120450340</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="56" parent="17" name="PARIER_PARI_ID_FK">
+    <foreign-key id="63" parent="18" name="PARIER_PARI_ID_FK">
       <columns>PARI_ID</columns>
       <ref-key>~.PARI.PARI_ID_PK</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="57" parent="18" name="ID">
+    <column id="64" parent="19" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="58" parent="18" name="NOM">
+    <column id="65" parent="19" name="NOM">
       <data-type>VARCHAR(255)|12</data-type>
     </column>
-    <column id="59" parent="18" name="LIMCOINS">
+    <column id="66" parent="19" name="LIMCOINS">
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <key id="60" parent="18" name="SQL161116120450340">
+    <key id="67" parent="19" name="SQL161116120450340">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <column id="61" parent="19" name="ID">
+    <column id="68" parent="20" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="62" parent="19" name="NOM_PARTICIPANTS">
+    <column id="69" parent="20" name="NOM_PARTICIPANTS">
       <data-type>VARCHAR(25)|12</data-type>
     </column>
-    <key id="63" parent="19" name="SQL161116104516700">
+    <key id="70" parent="20" name="SQL161116104516700">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>
     </key>
-    <column id="64" parent="20" name="MATCH_ID">
+    <column id="71" parent="21" name="MATCH_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="65" parent="20" name="PARTICIPANTS_ID">
+    <column id="72" parent="21" name="PARTICIPANTS_ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <foreign-key id="66" parent="20" name="PARTICIPE_MATCH_ID_FK">
+    <foreign-key id="73" parent="21" name="PARTICIPE_MATCH_ID_FK">
       <columns>MATCH_ID</columns>
-      <ref-key>~.MATCH.SQL161116104443070</ref-key>
+      <ref-key>~.MATCH2.SQL161117160633790</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="67" parent="20" name="PARTICIPE_PARTICIPANTS_ID_FK">
+    <foreign-key id="74" parent="21" name="PARTICIPE_PARTICIPANTS_ID_FK">
       <columns>PARTICIPANTS_ID</columns>
       <ref-key>~.PARTICIPANTS.SQL161116104516700</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="68" parent="21" name="ID">
+    <column id="75" parent="22" name="ID">
       <mandatory>1</mandatory>
       <data-type>INTEGER(10)|4</data-type>
     </column>
-    <column id="69" parent="21" name="NOM">
+    <column id="76" parent="22" name="NOM">
       <data-type>VARCHAR(255)|12</data-type>
     </column>
-    <column id="70" parent="21" name="MOTDEPASSE">
+    <column id="77" parent="22" name="MOTDEPASSE">
       <data-type>VARCHAR(255)|12</data-type>
     </column>
-    <column id="71" parent="21" name="TYPE">
+    <column id="78" parent="22" name="TYPE">
       <data-type>VARCHAR(255)|12</data-type>
     </column>
-    <key id="72" parent="21" name="SQL161116120050790">
+    <key id="79" parent="22" name="SQL161116120050790">
       <name-surrogate>1</name-surrogate>
       <columns>ID</columns>
       <primary>1</primary>

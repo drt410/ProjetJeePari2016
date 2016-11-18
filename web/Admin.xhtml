@@ -10,6 +10,7 @@
     <link href="style.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <h:body>
+    <h:panelGroup rendered="#{!UserBean.edit}">
     <h3 style="text-align: center;">Création d'utilisateur</h3>
     <h:form class="form-style-1">
         <h:panelGrid columns="2">
@@ -21,10 +22,31 @@
             <h:inputText value="#{UserBean.utilisateur.motdepasse}"/>
             <h:outputLabel value="Type:"/>
             <h:inputText value="#{UserBean.utilisateur.type}"/>
-        </h:panelGrid>
         <h:commandButton value="Créer Nouvelle utilisateur"
                          action="#{UserBean.addNewUtilisateur()}"/>
+        </h:panelGrid>
     </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup rendered="#{UserBean.edit}">
+        <h3 style="text-align: center;">Mis a jour d'utilisateur</h3>
+        <h:form class="form-style-1">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="id : "/>
+                <h:inputText value="#{UserBean.utilisateur.id}"/>
+                <h:outputLabel value="Nom : "/>
+                <h:inputText value="#{UserBean.utilisateur.nom}"/>
+                <h:outputLabel value="Mot de passe :"/>
+                <h:inputText value="#{UserBean.utilisateur.motdepasse}"/>
+                <h:outputLabel value="Type:"/>
+                <h:inputText value="#{UserBean.utilisateur.type}"/>
+                <h:commandButton value="Save"
+                                 action="#{UserBean.saveUser()}"/>
+        </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+    <h:form rendered="#{not empty UserBean.utilisateurList}">
     <h3 style="text-align: center;">Liste d'utilisateur</h3>
     <h:dataTable value="#{UserBean.utilisateurList}" var="user"  border="1">
         <h:column>
@@ -53,13 +75,15 @@
         </h:column>
         <h:column>
             <h:commandLink value="edit"
-                           action="#{user.editUser(user)}" /> |
+                           action="#{UserBean.editUser(user)}" /> |
             <h:commandLink value="delete"
-                           action="#{user.deleteUser(user)}" />
+                           action="#{UserBean.deleteUser(user)}" />
         </h:column>
     </h:dataTable>
-    <h3 style="text-align: center;">Liste de Parieur</h3>
+    </h:form>
 
+    <h:form rendered="#{not empty ParieurBean.parieurList}">
+    <h3 style="text-align: center;">Liste de Parieur</h3>
     <h:dataTable value="#{ParieurBean.parieurList}" var="parieu"  border="1">
         <h:column>
             <f:facet name="header">
@@ -79,16 +103,12 @@
             </f:facet>
             <h:outputText value="#{parieu.limcoins}"/>
         </h:column>
-        <h:column>
-            <h:commandLink value="edit"
-                           action="#{uc.editUser(usr)}" /> |
-            <h:commandLink value="delete"
-                           action="#{uc.deleteUser(usr)}" />
-        </h:column>
     </h:dataTable>
-    <h3 style="text-align: center;">Liste de Bookmakers</h3>
+    </h:form>
 
-    <h:dataTable value="#{BookmalersBean.bookmakersList}" var="bookmak"  border="1">
+    <h:form rendered="#{not empty BookmakersBean.bookmakersList}">
+    <h3 style="text-align: center;">Liste de Bookmakers</h3>
+    <h:dataTable value="#{BookmakersBean.bookmakersList}" var="bookmak"  border="1">
         <h:column>
             <f:facet name="header">
                 <h:outputText value="Id"/>
@@ -101,12 +121,15 @@
             </f:facet>
             <h:outputText value="#{bookmak.nom}"/>
         </h:column>
-        <h:column>
-            <h:commandLink value="edit"
-                           action="#{uc.editUser(usr)}" /> |
-            <h:commandLink value="delete"
-                           action="#{uc.deleteUser(usr)}" />
-        </h:column>
     </h:dataTable>
+    </h:form>
+
+    <h:form class="form-style-1">
+    <h:panelGrid>
+        <h:commandButton value="Retourner au menu principal"
+                         action="index.xhtml"
+                         style="width:250px"/>
+    </h:panelGrid>
+    </h:form>
 </h:body>
 </html>

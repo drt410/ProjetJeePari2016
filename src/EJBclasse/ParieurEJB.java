@@ -21,10 +21,18 @@ public class ParieurEJB {
         return query.getResultList();
     }
 
+    public Parieur updateParieur(Parieur parieur) {
+        return entityManager.merge(parieur);
+    }
+
+    public void deleteParieur(Parieur parieur) {
+        entityManager.remove(entityManager.merge(parieur));
+    }
 
     public Parieur getParieurById(int id) {
         return entityManager.find(Parieur.class, id);
     }
+
     public Parieur addNew(Parieur parieur) {
         entityManager.persist(parieur);
         return parieur;

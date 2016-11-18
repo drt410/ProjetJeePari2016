@@ -14,7 +14,20 @@
    <h:form class="form-style-1">
       <h:panelGrid columns="2">
          <h:commandButton value="Ajouter utilisateur"
-                          action="#{UserBean.viewAjout()}"/>
+                          action="#{UserBean.viewAjout()}"
+                          style="width:250px"/>
+         <h:commandButton value="Ajouter Cote"
+                          action="#{CoteBean.viewCote()}"
+                          style="width:250px"/>
+          <h:commandButton value="Ajouter Match"
+                           action="#{MatchBean.viewMatch()}"
+                           style="width:250px"/>
+          <h:commandButton value="Ajouter Pari"
+                           action="#{PariBean.viewPari()}"
+                           style="width:250px"/>
+         <h:commandButton value="Afficher le classement des parieurs"
+                           action="Classement.xhtml"
+                           style="width:250px"/>
       </h:panelGrid>
 
    </h:form>

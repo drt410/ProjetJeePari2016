@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "PARIEUR")
-@NamedQuery(name = "findParieur", query = "SELECT p FROM Parieur p")
+@NamedQuery(name = "findParieur", query = "SELECT p FROM Parieur p ORDER BY p.limcoins")
 public class Parieur implements Serializable {
 
     @Id
@@ -35,7 +35,7 @@ public class Parieur implements Serializable {
         this.limcoins = limcoins;
     }
 
-    public int parier(int montant)
+    public int miser(int montant)
     {
         int mise;
         mise = limcoins-montant;

@@ -20,7 +20,13 @@ public class BookmakersEJB {
         TypedQuery<Bookmakers> query = entityManager.createNamedQuery("findBookmakers", Bookmakers.class);
         return query.getResultList();
     }
+    public Bookmakers updateBookmakers(Bookmakers bookmakers) {
+        return entityManager.merge(bookmakers);
+    }
 
+    public void deleteBookmakers(Bookmakers bookmakers) {
+        entityManager.remove(entityManager.merge(bookmakers));
+    }
 
     public Bookmakers getBookmakersById(int id) {
         return entityManager.find(Bookmakers.class, id);

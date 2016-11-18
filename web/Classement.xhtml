@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Classement</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<f:view>
+    <h3 style="text-align: center;">Classement des parieurs</h3>
+    <h:dataTable value="#{ParieurBean.parieurList}" var="parieur"  border="1">
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Nom"/>
+        </f:facet>
+        <h:outputText value="#{parieur.nom}"/>
+    </h:column>
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Nombre de limcoins"/>
+        </f:facet>
+        <h:outputText value="#{parieur.limcoins}"/>
+    </h:column>
+    </h:dataTable>
+
+    <h:form class="form-style-1">
+        <h:panelGrid>
+            <h:commandButton value="Retourner au menu principal"
+                             action="index.xhtml"
+                             style="width:250px"/>
+        </h:panelGrid>
+    </h:form>
+</f:view>
+</html>
